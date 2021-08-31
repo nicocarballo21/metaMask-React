@@ -9,7 +9,7 @@ const SendEth = ({ web3 }) => {
     web3.eth.sendTransaction(
       {
         from: accounts[0],
-        to: "0x2f318C334780961FB129D2a6c30D0763d9a5C970",
+        to: "0x2f318C334780961FB129D2a6c30D0763d9a5C970", // cuenta random
         value: web3.utils.toWei(value, "ether"),
         gas: 21000,
         gasPrice: 20000000000

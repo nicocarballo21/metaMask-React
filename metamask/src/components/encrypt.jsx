@@ -14,7 +14,10 @@ const Encrypt = ({ web3 }) => {
         <Button variant="warning" onClick={functions.getKey}>
           Get encryption key
         </Button>
+
+        {/* error message */}
         {err.code === 4001 && <p>We can't encrypt anything without the key</p>}
+
         {key && (
           <div>
             <p style={{ marginTop: "10px", color: "white" }}>Your encrypt key is: {key}</p>

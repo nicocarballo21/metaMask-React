@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react"
 import MetaMaskOnboarding from "@metamask/onboarding"
 import { Card, Button } from "react-bootstrap"
+import Status from "./status"
 
 const ONBOARD_TEXT = "Click here to install MetaMask!"
 const CONNECT_TEXT = "Connect"
@@ -66,6 +67,7 @@ const OnboardingButton = () => {
           <Button variant="warning" disabled={isDisabled} onClick={onClick}>
             {buttonText}
           </Button>
+          <Status />
           <Card.Body>
             <p style={{ color: "white" }}>Account: {accounts}</p>
           </Card.Body>
