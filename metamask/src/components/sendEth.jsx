@@ -1,11 +1,7 @@
 import React, { useState } from "react"
-import Web3 from "web3"
-
 import { Card, Button, FormControl } from "react-bootstrap"
 
-const web3 = new Web3(Web3.givenProvider || "http://localhost:3000")
-
-const SendEth = () => {
+const SendEth = ({ web3 }) => {
   const [value, setvalue] = useState(0)
 
   const send_eth = async () => {
@@ -32,7 +28,9 @@ const SendEth = () => {
     <Card>
       <Card.Body>
         <p>Here you can simulate a eth transaction</p>
-        <Button onClick={send_eth}>Send eth</Button>
+        <Button onClick={send_eth} style={{ marginBottom: "10px" }}>
+          Send eth
+        </Button>
         <FormControl
           placeholder="Select a eth amount to send"
           onChange={({ target }) => setvalue(target.value)}></FormControl>
