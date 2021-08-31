@@ -15,11 +15,11 @@ const Encrypt = ({ web3 }) => {
         {err.code === 4001 && <p>We can't encrypt anything without the key</p>}
         {key && (
           <div>
-            <p style={{ marginTop: "10px" }}>Your encrypt key is: {key}</p>
+            <p style={{ marginTop: "10px", color: "red" }}>Your encrypt key is: {key}</p>
             <FormControl
               placeholder="To encrypt.."
               onChange={({ target }) => settoEncrypt(target.value)}></FormControl>
-            <Button onClick={functions.encrypt}>Encrypt</Button>
+            <Button onClick={functions.encryptF}>Encrypt</Button>
           </div>
         )}
         {encrypted && (
@@ -27,7 +27,7 @@ const Encrypt = ({ web3 }) => {
             <p>Your encrypted word is {encrypted} </p>
             <hr />
             <p>decrypt</p>
-            <Button onClick={functions.decrypt}>Encrypt</Button>
+            <Button onClick={functions.decrypt}>Decrypt</Button>
             {decryptedWord && <p>Your word decrypted is: {decryptedWord}</p>}
           </div>
         )}
