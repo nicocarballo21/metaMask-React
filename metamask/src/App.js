@@ -1,9 +1,14 @@
-import React, { useEffect } from "react"
+import React from "react"
+import "bootstrap/dist/css/bootstrap.min.css"
+
+import OnBoardingBtn from "./components/onBoardingBtn"
+import Contracts from "./components/contracts"
 
 const App = () => {
   return (
     <div className="container">
-      <button>connect</button>
+      <OnBoardingBtn />
+      <Contracts />
     </div>
   )
 }
