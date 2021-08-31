@@ -8,27 +8,41 @@ const Encrypt = ({ web3 }) => {
   const [key, err, decryptedWord, encrypted, { functions }] = useEncrypt({ web3, toEncrypt })
 
   return (
-    <Card>
+    <Card bg={"secondary"}>
       <Card.Body>
-        <p>Here you can Encrypt / Decrypt</p>
-        <Button onClick={functions.getKey}>Get encryption key</Button>
+        <p style={{ color: "white" }}>Here you can Encrypt / Decrypt</p>
+        <Button variant="warning" onClick={functions.getKey}>
+          Get encryption key
+        </Button>
         {err.code === 4001 && <p>We can't encrypt anything without the key</p>}
         {key && (
           <div>
-            <p style={{ marginTop: "10px", color: "red" }}>Your encrypt key is: {key}</p>
+            <p style={{ marginTop: "10px", color: "white" }}>Your encrypt key is: {key}</p>
             <FormControl
               placeholder="To encrypt.."
               onChange={({ target }) => settoEncrypt(target.value)}></FormControl>
-            <Button onClick={functions.encryptF}>Encrypt</Button>
+            <Button
+              style={{ marginTop: "10px", marginBottom: "10px" }}
+              variant="warning"
+              onClick={functions.encryptF}>
+              Encrypt
+            </Button>
           </div>
         )}
+
         {encrypted && (
           <div>
-            <p>Your encrypted word is {encrypted} </p>
+            <p style={{ color: "white" }}>Your encrypted word is {encrypted} </p>
             <hr />
-            <p>decrypt</p>
-            <Button onClick={functions.decrypt}>Decrypt</Button>
-            {decryptedWord && <p>Your word decrypted is: {decryptedWord}</p>}
+            <h5 style={{ color: "white" }}>Decrypt action:</h5>
+            <Button variant="warning" onClick={functions.decrypt}>
+              Decrypt
+            </Button>
+            {decryptedWord && (
+              <p style={{ color: "white", marginTop: "10px" }}>
+                Your word decrypted is: {decryptedWord}
+              </p>
+            )}
           </div>
         )}
       </Card.Body>

@@ -60,14 +60,18 @@ const OnboardingButton = () => {
 
   return (
     <div>
-      <Card>
+      <hr />
+      <Card bg={"secondary"}>
         <Card.Body>
-          <Button disabled={isDisabled} onClick={onClick}>
+          <Button variant="warning" disabled={isDisabled} onClick={onClick}>
             {buttonText}
           </Button>
-          <Card.Body>Account: {accounts}</Card.Body>
+          <Card.Body>
+            <p style={{ color: "white" }}>Account: {accounts}</p>
+          </Card.Body>
         </Card.Body>
       </Card>
+      <hr />
     </div>
   )
 }

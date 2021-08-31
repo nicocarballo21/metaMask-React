@@ -25,17 +25,20 @@ const SendEth = ({ web3 }) => {
   }
 
   return (
-    <Card>
-      <Card.Body>
-        <p>Here you can simulate a eth transaction</p>
-        <Button onClick={send_eth} style={{ marginBottom: "10px" }}>
-          Send eth
-        </Button>
-        <FormControl
-          placeholder="Select a eth amount to send"
-          onChange={({ target }) => setvalue(target.value)}></FormControl>
-      </Card.Body>
-    </Card>
+    <div>
+      <Card bg={"secondary"}>
+        <Card.Body>
+          <p style={{ color: "white" }}>Here you can simulate the eth transaction</p>
+          <Button variant="warning" onClick={send_eth} style={{ marginBottom: "10px" }}>
+            Send eth
+          </Button>
+          <FormControl
+            placeholder="Select a eth amount to send"
+            onChange={({ target }) => setvalue(target.value)}></FormControl>
+        </Card.Body>
+      </Card>
+      <hr />
+    </div>
   )
 }
 
