@@ -19,6 +19,19 @@ const OnboardingButton = () => {
   }, [])
 
   useEffect(() => {
+    const handleNewAccounts = newAccounts => {
+      setAccounts(newAccounts)
+    }
+    if (MetaMaskOnboarding.isMetaMaskInstalled()) {
+      window.ethereum.request({ method: "eth_requestA1ccounts" }).then(handleNewAccounts)
+      window.ethereum.on("accountsChanged", handleNewAccounts)
+      return () => {
+        window.ethereum.off("accountsChanged", handleNewAccounts)
+      }
+    }
+  }, [])
+
+  useEffect(() => {
     if (MetaMaskOnboarding.isMetaMaskInstalled()) {
       if (accounts.length > 0) {
         setButtonText(CONNECTED_TEXT)
@@ -36,6 +49,7 @@ const OnboardingButton = () => {
       try {
         const newAccounts = await window.ethereum.request({ method: "eth_requestAccounts" })
         setAccounts(newAccounts)
+        window.alert("now you are log in")
       } catch (err) {
         console.log(err)
       }

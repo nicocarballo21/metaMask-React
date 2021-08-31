@@ -2,13 +2,13 @@ import React from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
 
 import OnBoardingBtn from "./components/onBoardingBtn"
-import Contracts from "./components/contracts"
+import SendEth from "./components/sendEth"
 
 const App = () => {
   return (
     <div className="container">
       <OnBoardingBtn />
-      <Contracts />
+      <SendEth />
     </div>
   )
 }
