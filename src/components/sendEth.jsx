@@ -9,8 +9,8 @@ const SendEth = ({ web3 }) => {
     web3.eth.sendTransaction(
       {
         from: accounts[0],
-        to: "0x2f318C334780961FB129D2a6c30D0763d9a5C970", // cuenta random
-        value: web3.utils.toWei(value, "ether"),
+        to: "0x2f318C334780961FB129D2a6c30D0763d9a5C970", // random account
+        value: web3.utils.toWei(value, "ether"), // used to set the eth amount
         gas: 21000,
         gasPrice: 20000000000
       },
@@ -28,7 +28,7 @@ const SendEth = ({ web3 }) => {
     <div>
       <Card bg={"secondary"}>
         <Card.Body>
-          <p style={{ color: "white" }}>Here you can simulate the eth transaction</p>
+          <p style={{ color: "white" }}>Here you can simulate eth transactions</p>
           <Button variant="warning" onClick={send_eth} style={{ marginBottom: "10px" }}>
             Send eth
           </Button>

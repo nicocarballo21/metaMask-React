@@ -1,14 +1,12 @@
 import { useState, useEffect } from "react"
-// import EthSigEncryption from "eth-sig-encrypt"
-// import EthCrypto from "eth-crypto"
 import { encrypt } from "eth-sig-util"
 
 export default function useEncrypt({ web3, toEncrypt }) {
+  const [publicKey, setPublickey] = useState("")
+  const [err, seterr] = useState("")
   const [accounts, setaccounts] = useState([])
   const [encrypted, setencrypted] = useState("")
   const [decryptedWord, setdecryptedWord] = useState("")
-  const [key, setKey] = useState("")
-  const [err, seterr] = useState("")
 
   useEffect(() => {
     const init = async () => {
@@ -18,13 +16,13 @@ export default function useEncrypt({ web3, toEncrypt }) {
     init()
   }, [web3.eth])
 
-  const getKey = async () => {
+  const getPublicKey = async () => {
     try {
-      const encrypKey = await window.ethereum.request({
+      const key = await window.ethereum.request({
         method: "eth_getEncryptionPublicKey",
         params: [accounts[0]]
       })
-      setKey(encrypKey)
+      setPublickey(key)
     } catch (err) {
       seterr(err)
     }
@@ -33,7 +31,7 @@ export default function useEncrypt({ web3, toEncrypt }) {
   const encryptF = async () => {
     try {
       const encrypted = web3.utils.toHex(
-        JSON.stringify(encrypt(key, { data: toEncrypt }, "x25519-xsalsa20-poly1305"))
+        JSON.stringify(encrypt(publicKey, { data: toEncrypt }, "x25519-xsalsa20-poly1305"))
       )
       setencrypted(encrypted)
     } catch (err) {
@@ -53,5 +51,11 @@ export default function useEncrypt({ web3, toEncrypt }) {
     }
   }
 
-  return [key, err, decryptedWord, encrypted, { functions: { getKey, encryptF, decrypt } }]
+  return [
+    publicKey,
+    err,
+    decryptedWord,
+    encrypted,
+    { functions: { getPublicKey, encryptF, decrypt } }
+  ]
 }

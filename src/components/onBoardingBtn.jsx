@@ -24,7 +24,6 @@ const OnboardingButton = () => {
       setAccounts(newAccounts)
     }
     if (MetaMaskOnboarding.isMetaMaskInstalled()) {
-      // window.ethereum.request({ method: "eth_requestA1ccounts" }).then(handleNewAccounts)
       window.ethereum.on("accountsChanged", handleNewAccounts)
       return () => {
         window.ethereum.off("accountsChanged", handleNewAccounts)
@@ -50,7 +49,7 @@ const OnboardingButton = () => {
       try {
         const newAccounts = await window.ethereum.request({ method: "eth_requestAccounts" })
         setAccounts(newAccounts)
-        window.alert("now you are log in")
+        window.alert("Login success!")
       } catch (err) {
         console.log(err)
       }
